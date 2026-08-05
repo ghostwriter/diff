@@ -4,10 +4,13 @@ declare(strict_types=1);
 
 namespace Tests\Unit\Container\Factory\SebastianBergmann\Diff\Output;
 
+use Ghostwriter\Container\Container;
 use Ghostwriter\Container\Interface\Service\FactoryInterface;
 use Ghostwriter\Diff\Container\Factory\SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilderFactory;
 use Ghostwriter\PHPUnitAssertions\Trait\AssertionsTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use SebastianBergmann\Diff\Output\DiffOutputBuilderInterface;
+use SebastianBergmann\Diff\Output\StrictUnifiedDiffOutputBuilder;
 use Tests\Unit\AbstractTestCase;
 use Throwable;
 
@@ -20,5 +23,16 @@ final class StrictUnifiedDiffOutputBuilderFactoryTest extends AbstractTestCase
     public function testImplementsGhostwriterContainerInterfaceServiceFactoryInterface(): void
     {
         self::assertClassImplementsInterface(StrictUnifiedDiffOutputBuilderFactory::class, FactoryInterface::class);
+    }
+
+    /** @throws Throwable */
+    public function testStrictUnifiedDiffOutputBuilder(): void
+    {
+        $container = Container::getInstance();
+
+        self::assertInstanceOf(
+            StrictUnifiedDiffOutputBuilder::class,
+            $container->get(DiffOutputBuilderInterface::class)
+        );
     }
 }

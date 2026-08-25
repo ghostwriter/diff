@@ -43,7 +43,7 @@
         "php": "~8.4.0 || ~8.5.0 || ~8.6.0",
         "ext-mbstring": "*",
         "ghostwriter/container": "^7.0.2",
-        "sebastian/diff": "^9.0.0"
+        "sebastian/diff": "^9.0.1"
     },
     "require-dev": {
         "ext-xdebug": "*",
